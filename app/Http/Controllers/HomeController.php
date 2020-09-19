@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use APP\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,8 +25,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
+
     {
-        return view('home');
+        //$orders=DB::table('orders')->where(['userid' => Auth::user()->id])->first();
+        $orders=DB::table('orders')->where('userid', '=', Auth::user()->id)->get();
+        return view('home',compact('orders'));
     }
 
     public function adminHome()

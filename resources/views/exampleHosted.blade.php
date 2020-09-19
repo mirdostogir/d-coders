@@ -99,7 +99,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         {{-- put product --}}
-                        
+                        <input type="hidden" name="userid" class="form-control" id="" placeholder="" value="{{auth()->user()->id}}">
                         <input type="hidden" name="product_name" class="form-control" id="" placeholder=""value="{{$product['name']}}">
                         <input type="hidden" name="product_quantity" class="form-control" id="" placeholder=""value="{{$product['quantity']}}">
                         <input type="hidden" name="product_image" class="form-control" id="" placeholder=""value="{{$product['image']}}">

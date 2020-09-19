@@ -129,7 +129,7 @@
             <div class="d-flex flex-column m-auto">
               <div class="stats-small__data text-center">
                 <span class="stats-small__label text-uppercase">Orders</span>
-                <h6 class="stats-small__value count my-3">{{ \App\Product::all()->count() }}</h6>
+                <h6 class="stats-small__value count my-3">{{\App\Order::where(['userid' => Auth::user()->id])->count()}}</h6>
               </div>
               <div class="stats-small__data">
                 <span class="stats-small__percentage stats-small__percentage--increase">{{ \App\Product::all()->count()/100 }}%</span>
@@ -158,13 +158,43 @@
     <!-- End Small Stats Blocks -->
     <div class="row">
       <!-- Users Stats -->
-      <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+      <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
         <div class="card card-small">
           <div class="card-header border-bottom">
             <h6 class="m-0">Users</h6>
           </div>
           <div class="card-body pt-0">
-           .....
+        
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Product Name</th>
+                
+                  <th scope="col">Product Quantity</th>
+                  <th scope="col">Currency</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($orders as $key => $order)
+                <tr>
+                  <th scope="row">{{ ++$key }}</th>
+                  <td>{{ $order->product_name }}</td>
+                 
+                  <td>{{ $order->product_quantity }}</td>
+                  <td>{{ $order->currency }}</td>
+                  <td>{{ $order->amount }}</td>
+                  <td>{{ $order->status }}</td>
+
+                  
+                </tr>
+                @endforeach
+                
+              </tbody>
+            </table>
+
          
           </div>
         </div>

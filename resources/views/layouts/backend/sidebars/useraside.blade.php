@@ -31,15 +31,9 @@
             <span> Dashboard</span>
           </a>
         </li>
-        
+  
         <li class="nav-item">
-          <a class="nav-link " href="tables.html">
-            <i class="material-icons">table_chart</i>
-            <span>Orders</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{{ url('backend/pages/admin/admin_profile') }}">
+          <a class="nav-link " href="{{ url('backend/pages/admin/user_profile') }}">
             <i class="material-icons">person</i>
             <span>Profile</span>
           </a>

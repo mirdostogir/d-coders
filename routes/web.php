@@ -56,6 +56,7 @@ Route::post('update/product/{id}','ProductController@UpdateProduct');
 ///////////////
 
 Route::get('backend/pages/admin/admin_profile','backend\UserController@admin_profile');
+Route::get('backend/pages/admin/user_profile','backend\UserController@user_profile');
 Route::post('backend/pages/admin/admin_profile','UserController@update_account');
 
 //////////

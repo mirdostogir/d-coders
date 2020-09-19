@@ -26,7 +26,7 @@ class SslCommerzPaymentController extends Controller
     public function index(Request $request)
 
     {
-        //d($request->all());
+       // dd($request->all());
       
         # Here you have to receive all the order data to initate the payment.
         # Let's say, your oder transaction informations are saving in a table called "orders"
@@ -37,8 +37,8 @@ class SslCommerzPaymentController extends Controller
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
-        # CUSTOMER INFORMATION
-        
+        # CUSTOMER INFORMATION 
+        $post_data['cus_id'] = $request->userid ?? '';
         $post_data['pro_name'] = $request->product_name ?? '';
         $post_data['pro_quantity'] = $request->product_quantity ?? '';
        // $post_data['pro_image'] = $request->product_image ?? '';
@@ -83,7 +83,7 @@ class SslCommerzPaymentController extends Controller
                 'product_name'=> $post_data['pro_name'],
                 'product_quantity'=> $post_data['pro_quantity'],
                 //'product_image'=> $post_data['pro_image'],
-
+                'userid' => $post_data['cus_id'],
                 'name' => $post_data['cus_name'],
                 'email' => $post_data['cus_email'],
                 'phone' => $post_data['cus_phone'],

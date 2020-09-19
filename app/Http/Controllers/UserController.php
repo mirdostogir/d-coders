@@ -17,6 +17,10 @@ class UserController extends Controller
     public function admin_profile(){
         return view('backend/pages/admin/admin_profile', array('user' => Auth::user()) );
     }
+
+    public function user_profile(){
+        return view('backend/pages/admin/user_profile', array('user' => Auth::user()) );
+    }
    
  
    
