@@ -80,7 +80,7 @@
             <span class="d-none d-md-inline-block"> {{ Auth::user()->name }}</span>
           </a>
           <div class="dropdown-menu dropdown-menu-small">
-            <a class="dropdown-item" href="{{ url('backend/pages/admin/admin_profile') }}">
+            <a class="dropdown-item" href="{{ url('backend/pages/admin/user_profile') }}">
               <i class="material-icons">&#xE7FD;</i> Profile</a>
             <a class="dropdown-item" href="components-blog-posts.html">
               <i class="material-icons">vertical_split</i> Orders</a>
@@ -123,12 +123,12 @@
     <!-- End Page Header -->
     <!-- Small Stats Blocks -->
     <div class="row">
-      <div class="col-lg col-md-6 col-sm-6 mb-4">
+      <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
         <div class="stats-small stats-small--1 card card-small">
           <div class="card-body p-0 d-flex">
             <div class="d-flex flex-column m-auto">
               <div class="stats-small__data text-center">
-                <span class="stats-small__label text-uppercase">Orders</span>
+                <span class="stats-small__label text-uppercase">My Orders</span>
                 <h6 class="stats-small__value count my-3">{{\App\Order::where(['userid' => Auth::user()->id])->count()}}</h6>
               </div>
               <div class="stats-small__data">

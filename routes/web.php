@@ -38,39 +38,37 @@ Route::get('contact','frontend\FrontendController@contact');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
 
+Route::group(['middleware' => 'isAdmin'], function(){
 
-
-
-//post route//
-Route::get('write/product','ProductController@writeProduct')->name('write.product');
-Route::post('store/product','ProductController@StoreProduct')->name('store.product');
-Route::get('all/product','ProductController@AllProduct')->name('all.product');
-Route::get('view/product/{id}','ProductController@ViewProduct');
-Route::get('delete/product/{id}','ProductController@DeleteProduct');
-Route::get('edit/product/{id}','ProductController@EditProduct');
-Route::post('update/product/{id}','ProductController@UpdateProduct');
+     Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
+       //post route//
+    Route::get('write/product','ProductController@writeProduct')->name('write.product');
+     Route::post('store/product','ProductController@StoreProduct')->name('store.product');
+    Route::get('all/product','ProductController@AllProduct')->name('all.product');
+    Route::get('view/product/{id}','ProductController@ViewProduct');
+    Route::get('delete/product/{id}','ProductController@DeleteProduct');
+    Route::get('edit/product/{id}','ProductController@EditProduct');
+   Route::post('update/product/{id}','ProductController@UpdateProduct');
 
 ///////////////
+    Route::get('backend/pages/admin/admin_profile','backend\UserController@admin_profile');
+    Route::post('backend/pages/admin/admin_profile','UserController@update_account');
+     
+    Route::resource('categories','backend\CategorieController');
+    Route::post('backend/pages/admin/{id}','backend\CategorieController@UpdateCategories');
 
-Route::get('backend/pages/admin/admin_profile','backend\UserController@admin_profile');
+   ///////
+   Route::resource('subcategories','backend\SubCategorieController');
+   Route::post('subcategories','backend\SubCategorieController@substore');
+
+   Route::post('updatesubcategories/{id}','backend\SubCategorieController@UpdateSubCategories');
+
+});
+
 Route::get('backend/pages/admin/user_profile','backend\UserController@user_profile');
-Route::post('backend/pages/admin/admin_profile','UserController@update_account');
 
-//////////
-
-Route::resource('categories','backend\CategorieController');
-Route::post('backend/pages/admin/{id}','backend\CategorieController@UpdateCategories');
-
-///////
-Route::resource('subcategories','backend\SubCategorieController');
-Route::post('subcategories','backend\SubCategorieController@substore');
-
-Route::post('updatesubcategories/{id}','backend\SubCategorieController@UpdateSubCategories');
-
-////////
 Route::resource('shop','backend\ShopController');
 
 ////////product Cart Route//////////
